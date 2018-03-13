@@ -50,6 +50,7 @@ def add_optimer_view(request):
             op.fc = form.cleaned_data['fc']
             op.create_time = post_time
             op.eve_character = character
+            op.operation_modifier = form.cleaned_data['operation_modifier'] #RAR 20180312 Added; Future proof for space point modifier for op.
             op.save()
             logger.info("User %s created op timer with name %s" % (request.user, op.operation_name))
             messages.success(request, _('Created operation timer for %(opname)s.') % {"opname": op.operation_name})

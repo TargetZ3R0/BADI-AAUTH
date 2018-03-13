@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\allianceauth",
+    "\\allianceauth\\corputils",
+    "\\allianceauth\\fleetup"
+  ],
+  "SelectedNode": "\\allianceauth\\fleetup\\auth_hooks.py",
+  "PreviewInSolutionExplorer": false
+}

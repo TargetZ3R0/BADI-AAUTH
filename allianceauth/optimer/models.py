@@ -18,6 +18,8 @@ class OpTimer(models.Model):
     fc = models.CharField(max_length=254, default="")
     post_time = models.DateTimeField(default=timezone.now)
     eve_character = models.ForeignKey(EveCharacter, null=True, on_delete=models.SET_NULL)
+    operation_modifier = models.PositiveIntegerField(default=1)  #RAR 20180312 Added; Future proof for space point modifier for op.
+
 
     def __str__(self):
         return self.operation_name
