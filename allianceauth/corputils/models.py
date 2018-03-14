@@ -114,6 +114,10 @@ class CorpStats(models.Model):
     @property
     def main_count(self):
         return len(self.mains)
+    @property
+    def percent_registered(self):
+        percent = (self.member_count - self.unregistered_member_count) / self.member_count * 100
+        return round(percent,0)
 
     @property
     def mains(self):

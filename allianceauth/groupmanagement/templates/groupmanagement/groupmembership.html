@@ -17,6 +17,7 @@
                     <th class="text-center">{% trans "Name" %}</th>
                     <th class="text-center">{% trans "Description" %}</th>
                     <th class="text-center">{% trans "Status" %}</th>
+					<th class="text-center">Join Link</th>
                     <th class="text-center">{% trans "Member Count" %}</th>
                     <th class="text-center">{% trans "Action" %}</th>
                 </tr>
@@ -26,11 +27,20 @@
                         <td class="text-center">{{ group.authgroup.description }}</td>
                         <td class="text-center">
                             {% if group.authgroup.hidden %}
-                                <span class="label label-info">{% trans "Hidden" %}</span>
+                                <span class="label label-info">{% trans "Hidden" %}</span><br />
                             {% elif group.authgroup.open %}
-                                <span class="label label-success">{% trans "Open" %}</span>
+                                <span class="label label-success">{% trans "Open" %}</span><br />
                             {% else %}
-                                <span class="label label-default">{% trans "Requestable" %}</span>
+                                <span class="label label-default">{% trans "Requestable" %}</span><br />
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if group.authgroup.hidden %}
+                                <span><a href="{% url 'groupmanagement:request_add' group.id %}">http://new.badfellas.space/{% url 'groupmanagement:request_add' group.id %}</a></span>
+                            {% elif group.authgroup.open %}
+                                <span><a href="{% url 'groupmanagement:request_add' group.id %}">http://new.badfellas.space/{% url 'groupmanagement:request_add' group.id %}</a></span>
+                            {% else %}
+                                <span><a href="{% url 'groupmanagement:request_add' group.id %}">http://new.badfellas.space/{% url 'groupmanagement:request_add' group.id %}</a></span>
                             {% endif %}
                         </td>
                         <td class="text-center">
