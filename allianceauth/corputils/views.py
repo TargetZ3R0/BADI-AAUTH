@@ -77,7 +77,7 @@ def corpstats_view(request, corp_id=None):
             corpstats = available.get(corp__corporation_id=request.user.profile.main_character.corporation_id)
         except CorpStats.DoesNotExist:
             pass
-
+			
     context = {
         'available': available,
     }
@@ -86,11 +86,15 @@ def corpstats_view(request, corp_id=None):
         members = corpstats.members.all()
         mains = corpstats.mains.all()
         unregistered = corpstats.unregistered_members.all()
+        percregmembers = corpstats.members.all().count()
+        percregunreg = corpstats.unregistered_members.all().count()
+        percentregged = ((percregmembers - percregunreg) / percregmembers) * 100
         context.update({
             'corpstats': corpstats,
             'members': members,
             'mains': mains,
             'unregistered': unregistered,
+			'percentregged': percentregged,
         })
 
     return render(request, 'corputils/corpstats.html', context=context)

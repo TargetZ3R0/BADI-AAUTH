@@ -21,6 +21,8 @@ class CorpStatsQuerySet(models.QuerySet):
             if user.has_perm('corputils.view_alliance_corpstats'):
                 queries.append(models.Q(corp__alliance__alliance_id=char.alliance_id))
             if user.has_perm('corputils.view_state_corpstats'):
+                queries.append(models.Q(corp__alliance__alliance_id='99006356'))
+                queries.append(models.Q(corp__alliance__alliance_id='99007293'))
                 queries.append(models.Q(corp__in=user.profile.state.member_corporations.all()))
                 queries.append(models.Q(corp__alliance__in=user.profile.state.member_alliances.all()))
             logger.debug('%s queries for user %s visible corpstats.' % (len(queries), user))
